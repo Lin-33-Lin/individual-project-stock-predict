@@ -4,15 +4,17 @@ import streamlit as st
 
 load_dotenv(override=True)  # 本地：读 .env；云端：没有这个文件，自动跳过，不报错
 
-def get_key(name: str):
-    """兼容写法：本地从 .env 读，云端从 Streamlit Secrets 读——同一份代码两处都能跑"""
-    value = os.getenv(name)        # ① 先试本地：.env 已被 load_dotenv 装进环境变量
+def get_key(name:str):
+    """兼容写法：本地从.env读，云端从 Streamlit Secrets 读——同一份代码两处都能跑"""
+    # ①先试本地：.env 已经被 load_dotenv 装进环境变量
+    value = os.getenv(name)
     if value:
         return value
     try:
-        return st.secrets[name]    # ② 再试云端：从平台 Secrets 读
+        return st.secrets[name]  # ②再试云端：从平台 Secrets 读
     except Exception:
-        return None                # ③ 两处都没有 → 返回 None，交给下面的报错逻辑提示
+        return ""  # 改成返回空字符串 ""，不要返回None，避免报错
+
 
 TUSHARE_TOKEN = get_key("TUSHARE_TOKEN")
 DEEPSEEK_API_KEY = get_key("DEEPSEEK_API_KEY")
