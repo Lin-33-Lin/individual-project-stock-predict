@@ -23,8 +23,7 @@ with st.sidebar.expander("🔧 密钥体检（部署排障用）"):
     st.write("TUSHARE_TOKEN：", "已配置" if TUSHARE_TOKEN else "❌ 缺失")
     st.write("DEEPSEEK_API_KEY：", "已配置" if DEEPSEEK_API_KEY else "❌ 缺失")
 
-streamlit
-python-dotenv
+
 
 
 
