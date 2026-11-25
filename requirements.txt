@@ -1,3 +1,17 @@
-streamlit
-python-dotenv
-tushare
+# 校园 FAQ 智能问答小助手 · 依赖清单
+# 只保留跑通必需的东西：这套组合在 Streamlit Community Cloud 的免费实例（1GB 内存）能装得下。
+# streamlit 固定为实测过的版本，避免宽高参数在新旧版本间来回改名导致云端启动报错。
+
+streamlit==1.67.0
+pandas>=2.0
+numpy>=1.24
+scikit-learn>=1.3
+plotly>=5.18
+pypdf>=4.0
+python-docx>=1.1
+requests>=2.31
+joblib>=1.3
+
+# —— 可选：本地完整版 RAG（云端不要装，torch 太大）——
+# faiss-cpu>=1.8.0          # 装了自动切换为 FAISS 索引，否则用 NumPy 兜底
+# sentence-transformers>=2.7  # 语义向量后端 EMBED_BACKEND=hf 时需要

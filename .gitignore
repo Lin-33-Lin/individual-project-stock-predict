@@ -1,3 +1,13 @@
-.env
-.venv/
 __pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# 密钥不要进仓库
+.streamlit/secrets.toml
+
+# 运行期产物：索引、日志、评估明细
+data/index/*
+!data/index/.gitkeep
+data/logs/*.csv
+data/eval/last_eval.csv
